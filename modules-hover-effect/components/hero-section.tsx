@@ -3,6 +3,7 @@
 import { ChevronRight, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
+import VideoModal from "./video-modal"
 
 export function HeroSection() {
   const { t } = useLanguage()
@@ -35,19 +36,26 @@ export function HeroSection() {
 
           {/* CTAs */}
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <button
-              type="button"
-              className="group flex items-center justify-between gap-6 rounded-full bg-foreground px-6 py-3 text-background transition-all duration-300 hover:bg-foreground/90"
-            >
-              <span className="text-sm font-medium whitespace-nowrap">{t("hero.cta")}</span>
-              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-background text-foreground">
-                <ChevronRight className="h-4 w-4" />
-              </div>
-            </button>
-            <Button variant="outline" size="lg" className="h-12 rounded-full px-8 text-base bg-transparent">
-              <Play className="mr-2 h-4 w-4" />
-              {t("hero.cta.secondary")}
-            </Button>
+            <div className="grid grid-cols-2 gap-4 items-start">
+              {/* 1x1: İlk Buton (Get Started) */}
+              <a 
+  href="https://www.probablythebestever.info/register" 
+  target="_blank" 
+  rel="noopener noreferrer"
+                className="group flex items-center justify-between gap-4 rounded-full bg-foreground px-6 py-3 text-background transition-all duration-300 hover:bg-foreground/90 w-full"
+              >
+                <span className="text-md font-medium whitespace-nowrap">{t("hero.cta")}</span>
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-background text-foreground">
+                  <ChevronRight className="h-4 w-4" />
+                </div>
+              </a>
+
+              {/* 1x2 (Veya senin deyiminle 2x1): İkinci Buton (View Demo) */}
+              <VideoModal videoId="f0Oppnxrb-Y" />
+
+              {/* 2x1: Boş Hücre (Eğer span'in sadece sağda olmasını istiyorsan burayı boş bırakıyoruz) */}
+              <div></div>
+            </div>
           </div>
         </div>
 

@@ -1,0 +1,47 @@
+# Bağımlılıklar (Dependencies)
+node_modules/
+.pnp
+.pnp.js
+
+# Build çıktıları (Production)
+dist/
+build/
+.next/
+out/
+bin/
+obj/
+
+# Ortam Değişkenleri (HASSAS VERİLER - ASLA YÜKLENMEMELİ)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env.local
+
+# Log dosyaları
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editör ve Sistem Dosyaları
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# TypeScript
+*.tsbuildinfo
+
+# Test çıktıları
+coverage/
+.nyc_output
+
+# Geçici dosyalar
+.cache/
+.turbo/

@@ -36,24 +36,26 @@ export function FinalCTASection() {
 
             {/* Side buttons */}
             <div className="flex w-full flex-col gap-3 sm:w-auto">
-              <button
-                type="button"
-                className="group flex items-center justify-between gap-6 rounded-full bg-background px-6 py-3 text-foreground transition-all duration-300 hover:bg-background/90"
+              <a
+                href="mailto:sertacguler1@gmail.com?subject=Information%20Request%3A%20JobTS%20Enterprise%20Features&body=Hello%20Team%2C%0A%0AI%20am%20interested%20in%20JobTS%20and%20would%20like%20to%20receive%20more%20information%20regarding%20your%20Enterprise%20solutions.%20Could%20you%20please%20share%20details%20about%20the%20features%20and%20support%20options%20available%20for%20large%20teams%3F%0A%0AThank%20you."
+                className="group flex items-center justify-between gap-6 rounded-full bg-background px-6 py-3 text-foreground border border-foreground/10 transition-all duration-300 hover:bg-background/90"
               >
-                <span className="text-sm font-medium whitespace-nowrap">Talk to an Expert</span>
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-foreground text-background">
+                <span className="text-sm font-medium whitespace-nowrap">Talk to Sales</span>
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-foreground text-background transition-transform duration-300 group-hover:translate-x-1">
                   <ChevronRight className="h-4 w-4" />
                 </div>
-              </button>
-              <button
-                type="button"
-                className="group flex items-center justify-between gap-6 rounded-full border border-background/30 bg-transparent px-6 py-3 text-background transition-all duration-300 hover:bg-background/10"
+              </a>
+              <a 
+                href="https://www.probablythebestever.info/register" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between gap-6 rounded-full border border-background/30 bg-transparent px-6 py-3 text-background transition-all duration-300 hover:bg-background/10 w-full"
               >
-                <span className="text-sm font-medium whitespace-nowrap">Get an Enterprise Trial</span>
-                <div className="flex h-7 w-7 items-center justify-center rounded-full border border-background/30 text-background">
+                <span className="text-sm font-medium whitespace-nowrap">Request Enterprise Trial</span>
+                <div className="flex h-7 w-7 items-center justify-center rounded-full border border-background/30 text-background transition-transform duration-300 group-hover:translate-x-1">
                   <ChevronRight className="h-4 w-4" />
                 </div>
-              </button>
+              </a>
             </div>
           </div>
         </div>
