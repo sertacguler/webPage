@@ -25,7 +25,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.title": "Manage Projects with Precision",
     "hero.subtitle": "A modular, fast, and developer-friendly job tracking system designed for modern teams.",
     "hero.cta": "Get Started",
-    "hero.cta.secondary": "View Demo",
+    "hero.cta.secondary": "Try Live Demo",
     
     // Modules Section
     "modules.title": "Powerful Modules",

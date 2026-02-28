@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { X, Play } from 'lucide-react';
+import { useLanguage } from '@/lib/language-context';
 
 interface VideoModalProps {
   videoId: string; // videoId'nin bir metin (string) olduğunu belirttik
 }
 
 const VideoModal: React.FC<VideoModalProps> = ({ videoId }) => {
+  const { t } = useLanguage()
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,7 +19,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ videoId }) => {
           className="flex h-12 items-center justify-center rounded-full border border-input bg-transparent px-8 text-base font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
         >
           <Play className="mr-2 h-4 w-4 fill-current" />
-          View Demo
+          {t("hero.cta.secondary")}
         </button>
         <span className="mt-1 text-xs text-muted-foreground italic">2 min video</span>
       </div>

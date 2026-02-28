@@ -1,12 +1,18 @@
 "use client"
 
 import { ChevronRight, Play } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
 import VideoModal from "./video-modal"
 
 export function HeroSection() {
   const { t } = useLanguage()
+
+  const handleScroll = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight, // Sayfanın tam boyu kadar aşağı in
+      behavior: "smooth" // Kayma efekti ver
+    });
+  };
 
   return (
     <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-32">
@@ -39,19 +45,44 @@ export function HeroSection() {
             <div className="grid grid-cols-2 gap-4 items-start">
               {/* 1x1: İlk Buton (Get Started) */}
               <a 
-  href="https://www.probablythebestever.info/register" 
-  target="_blank" 
-  rel="noopener noreferrer"
+                href="https://www.probablythebestever.info/register" 
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between gap-4 rounded-full bg-foreground px-6 py-3 text-background transition-all duration-300 hover:bg-foreground/90 w-full"
               >
-                <span className="text-md font-medium whitespace-nowrap">{t("hero.cta")}</span>
+                <span className="text-md font-medium whitespace-nowrap">{t("hero.cta.secondary")}</span>
                 <div className="flex h-7 w-7 items-center justify-center rounded-full bg-background text-foreground">
                   <ChevronRight className="h-4 w-4" />
                 </div>
               </a>
 
               {/* 1x2 (Veya senin deyiminle 2x1): İkinci Buton (View Demo) */}
-              <VideoModal videoId="f0Oppnxrb-Y" />
+              {/*<VideoModal videoId="f0Oppnxrb-Y"/>*/}
+              <div className="flex flex-col items-center">
+                {/* Dış Taşıyıcı: Overflow hidden ile dışarı taşan renkleri kesiyoruz */}
+                <div 
+                  className="relative flex h-12 items-center justify-center overflow-hidden rounded-full p-[2px]" 
+                  style={{ width: 'fit-content' }}
+                  onClick={handleScroll} // Butona tıklandığında sayfanın en altına kaydır
+                >
+                  {/* Hareket Eden Renkli Şerit (Yükleniyor Efekti) */}
+                  <div 
+                    className="absolute inset-[-200%] animate-spin"
+                    style={{
+                      background: 'conic-gradient(red, orange, yellow, green, blue, indigo, violet, red)',
+                      animationDuration: '3s'
+                    }}
+                  />
+
+                  {/* İç Buton: Arka planı siyah yaparak orta kısmı kapatıyoruz */}
+                  <button 
+                    className="relative z-10 flex h-full items-center justify-center rounded-full bg-black px-8 text-base font-medium text-white transition-colors hover:bg-zinc-900"
+                  >
+                    <Play className="mr-2 h-4 w-4 fill-current text-white" />
+                    {t("hero.cta")}
+                  </button>
+                </div>
+              </div>
 
               {/* 2x1: Boş Hücre (Eğer span'in sadece sağda olmasını istiyorsan burayı boş bırakıyoruz) */}
               <div></div>
