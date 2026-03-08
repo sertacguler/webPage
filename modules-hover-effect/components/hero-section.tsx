@@ -1,11 +1,25 @@
 "use client"
 
-import { ChevronRight, Play } from "lucide-react"
+import { ChevronRight, Copy, Info, Play, X } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 import VideoModal from "./video-modal"
+import { useState } from "react"
 
 export function HeroSection() {
   const { t } = useLanguage()
+
+  const [showPopover, setShowPopover] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  // Demo Bilgileri
+  const demoEmail = "test@test.com"
+  const demoPass = "test1234"
+
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   const handleScroll = () => {
     window.scrollTo({
@@ -42,19 +56,71 @@ export function HeroSection() {
 
           {/* CTAs */}
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <div className="grid grid-cols-2 gap-4 items-start">
+            <div className="grid grid-cols-2 gap-4 items-start relative">
               {/* 1x1: İlk Buton (Get Started) */}
-              <a 
-                href="https://www.probablythebestever.info/register" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between gap-4 rounded-full bg-foreground px-6 py-3 text-background transition-all duration-300 hover:bg-foreground/90 w-full"
-              >
-                <span className="text-md font-medium whitespace-nowrap">{t("hero.cta.secondary")}</span>
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-background text-foreground">
-                  <ChevronRight className="h-4 w-4" />
-                </div>
-              </a>
+{/* --- TRY LIVE DEMO BUTONU VE POPOVER --- */}
+              <div className="relative">
+                <button 
+                  onClick={() => setShowPopover(!showPopover)}
+                  className="group flex items-center justify-between gap-4 rounded-full bg-foreground px-6 py-3 text-background transition-all duration-300 hover:bg-foreground/90 w-full"
+                >
+                  <span className="text-md font-medium whitespace-nowrap">
+                    {t("hero.cta.secondary")}
+                  </span>
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-background text-foreground">
+                    <ChevronRight className={`h-4 w-4 transition-transform ${showPopover ? 'rotate-90' : ''}`} />
+                  </div>
+                </button>
+
+                {/* Popover Kutusu */}
+                {showPopover && (
+                  <div className="absolute top-full mt-4 left-0 w-72 rounded-2xl border border-white/10 bg-zinc-950 p-5 shadow-2xl animate-in fade-in slide-in-from-top-2 z-[60] text-left">
+                    <div className="flex items-center justify-between mb-3 text-zinc-400">
+                      <div className="flex items-center gap-2">
+                        <Info size={14} className="text-blue-500" />
+                        <span className="text-[11px] font-bold uppercase tracking-wider">Demo Access</span>
+                      </div>
+                      <button onClick={() => setShowPopover(false)}><X size={14} /></button>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div 
+                        onClick={() => handleCopy(demoEmail)}
+                        className="group/item flex cursor-pointer items-center justify-between rounded-lg bg-white/5 p-2.5 transition-colors hover:bg-white/10 border border-white/5"
+                      >
+                        <div className="flex flex-col">
+                          <span className="text-[10px] text-zinc-500">Email</span>
+                          <code className="text-xs text-zinc-200">{demoEmail}</code>
+                        </div>
+                        <Copy size={14} className="text-zinc-500 group-hover/item:text-white transition-colors" />
+                      </div>
+                      
+                      <div 
+                        onClick={() => handleCopy(demoPass)}
+                        className="group/item flex cursor-pointer items-center justify-between rounded-lg bg-white/5 p-2.5 transition-colors hover:bg-white/10 border border-white/5"
+                      >
+                        <div className="flex flex-col">
+                          <span className="text-[10px] text-zinc-500">Password</span>
+                          <code className="text-xs text-zinc-200">{demoPass}</code>
+                        </div>
+                        <Copy size={14} className="text-zinc-500 group-hover/item:text-white transition-colors" />
+                      </div>
+                    </div>
+
+                    <p className="mt-4 text-[10px] leading-relaxed text-zinc-500 italic border-t border-white/5 pt-3">
+                      * Bu hesapla yapılan değişiklikler her saat başı sıfırlanır.
+                    </p>
+
+                    <a 
+                      href="/dashboard" // Demo dashboard linkin
+                      target="_blank"
+                      className="mt-4 block w-full rounded-xl bg-white py-2.5 text-center text-xs font-bold text-black transition-transform active:scale-95"
+                    >
+                      Login to Demo Panel
+                    </a>
+                  </div>
+                )}
+              </div>
 
               {/* 1x2 (Veya senin deyiminle 2x1): İkinci Buton (View Demo) */}
               {/*<VideoModal videoId="f0Oppnxrb-Y"/>*/}

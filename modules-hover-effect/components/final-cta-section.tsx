@@ -2,10 +2,24 @@
 
 import { useLanguage } from "@/lib/language-context"
 import { ArrowRight, ChevronRight } from "lucide-react"
+import { useState } from "react";
+import FreemiumModal from "./freemium-modal";
 
 export function FinalCTASection() {
   const { t } = useLanguage()
 
+const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const handleFreemiumClick = (e: React.MouseEvent) => {
+    e.preventDefault(); // Direkt linke gitmesini engelle
+    setIsModalOpen(true);
+  };
+
+  const handleConfirmFreemium = () => {
+    setIsModalOpen(false);
+    // Onaylandığında kayıt sayfasına yönlendir
+    window.open("https://www.probablythebestever.info/register", "_blank", "noopener,noreferrer");
+  };
   return (
     <section className="border-t border-border bg-foreground py-20 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -45,21 +59,24 @@ export function FinalCTASection() {
                   <ChevronRight className="h-4 w-4" />
                 </div>
               </a>
-              <a 
-                href="https://www.probablythebestever.info/register" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between gap-6 rounded-full border border-background/30 bg-transparent px-6 py-3 text-background transition-all duration-300 hover:bg-background/10 w-full"
+    <button 
+                onClick={handleFreemiumClick}
+                className="group flex items-center justify-between gap-6 rounded-full border border-background/30 bg-transparent px-6 py-3 text-background transition-all hover:bg-background/10 w-full"
               >
-                <span className="text-sm font-medium whitespace-nowrap">Request Enterprise Trial</span>
-                <div className="flex h-7 w-7 items-center justify-center rounded-full border border-background/30 text-background transition-transform duration-300 group-hover:translate-x-1">
+                <span className="text-sm font-medium">Try Freemium Now</span>
+                <div className="flex h-7 w-7 items-center justify-center rounded-full border border-background/30 text-background group-hover:translate-x-1 transition-transform">
                   <ChevronRight className="h-4 w-4" />
                 </div>
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </div>
+      <FreemiumModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onConfirm={handleConfirmFreemium} 
+      />
     </section>
   )
 }
