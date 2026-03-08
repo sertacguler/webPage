@@ -112,7 +112,7 @@ export function HeroSection() {
                     </p>
 
                     <a 
-                      href="/dashboard" // Demo dashboard linkin
+                      href="https://www.probablythebestever.info/"
                       target="_blank"
                       className="mt-4 block w-full rounded-xl bg-white py-2.5 text-center text-xs font-bold text-black transition-transform active:scale-95"
                     >
