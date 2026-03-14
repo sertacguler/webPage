@@ -11,7 +11,7 @@ export function HeroSection() {
   const [showPopover, setShowPopover] = useState(false)
   const [copied, setCopied] = useState(false)
 
-  // Demo Bilgileri
+  // Demo Credentials
   const demoEmail = "test@test.com"
   const demoPass = "test1234"
 
@@ -23,8 +23,8 @@ export function HeroSection() {
 
   const handleScroll = () => {
     window.scrollTo({
-      top: document.documentElement.scrollHeight, // Sayfanın tam boyu kadar aşağı in
-      behavior: "smooth" // Kayma efekti ver
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth"
     });
   };
 
@@ -37,13 +37,6 @@ export function HeroSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          {/* Badge 
-          <div className="mb-6 inline-flex items-center rounded-full border border-border bg-secondary/50 px-4 py-1.5">
-            <span className="text-xs font-medium text-muted-foreground">
-              Open Source Project
-            </span>
-          </div>*/}
-
           {/* Headline */}
           <h1 className="mx-auto max-w-4xl text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             {t("hero.title")}
@@ -57,8 +50,8 @@ export function HeroSection() {
           {/* CTAs */}
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <div className="grid grid-cols-2 gap-4 items-start relative">
-              {/* 1x1: İlk Buton (Get Started) */}
-{/* --- TRY LIVE DEMO BUTONU VE POPOVER --- */}
+              
+              {/* --- TRY LIVE DEMO BUTTON & POPOVER --- */}
               <div className="relative">
                 <button 
                   onClick={() => setShowPopover(!showPopover)}
@@ -72,7 +65,7 @@ export function HeroSection() {
                   </div>
                 </button>
 
-                {/* Popover Kutusu */}
+                {/* Popover Box */}
                 {showPopover && (
                   <div className="absolute top-full mt-4 left-0 w-72 rounded-2xl border border-white/10 bg-zinc-950 p-5 shadow-2xl animate-in fade-in slide-in-from-top-2 z-[60] text-left">
                     <div className="flex items-center justify-between mb-3 text-zinc-400">
@@ -108,7 +101,7 @@ export function HeroSection() {
                     </div>
 
                     <p className="mt-4 text-[10px] leading-relaxed text-zinc-500 italic border-t border-white/5 pt-3">
-                      * Bu hesapla yapılan değişiklikler her saat başı sıfırlanır.
+                      * Changes made with this account are reset every hour.
                     </p>
 
                     <a 
@@ -122,16 +115,13 @@ export function HeroSection() {
                 )}
               </div>
 
-              {/* 1x2 (Veya senin deyiminle 2x1): İkinci Buton (View Demo) */}
-              {/*<VideoModal videoId="f0Oppnxrb-Y"/>*/}
+              {/* View Demo Button with Spin Effect */}
               <div className="flex flex-col items-center">
-                {/* Dış Taşıyıcı: Overflow hidden ile dışarı taşan renkleri kesiyoruz */}
                 <div 
                   className="relative flex h-12 items-center justify-center overflow-hidden rounded-full p-[2px]" 
                   style={{ width: 'fit-content' }}
-                  onClick={handleScroll} // Butona tıklandığında sayfanın en altına kaydır
+                  onClick={handleScroll}
                 >
-                  {/* Hareket Eden Renkli Şerit (Yükleniyor Efekti) */}
                   <div 
                     className="absolute inset-[-200%] animate-spin"
                     style={{
@@ -140,7 +130,6 @@ export function HeroSection() {
                     }}
                   />
 
-                  {/* İç Buton: Arka planı siyah yaparak orta kısmı kapatıyoruz */}
                   <button 
                     className="relative z-10 flex h-full items-center justify-center rounded-full bg-black px-8 text-base font-medium text-white transition-colors hover:bg-zinc-900"
                   >
@@ -150,7 +139,6 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* 2x1: Boş Hücre (Eğer span'in sadece sağda olmasını istiyorsan burayı boş bırakıyoruz) */}
               <div></div>
             </div>
           </div>
@@ -159,7 +147,6 @@ export function HeroSection() {
         {/* Dashboard Preview */}
         <div className="relative mt-16 sm:mt-24">
           <div className="relative mx-auto max-w-5xl">
-            {/* Browser frame */}
             <div className="overflow-hidden rounded-xl border border-border bg-card shadow-2xl">
               {/* Browser header */}
               <div className="flex items-center gap-2 border-b border-border bg-secondary/50 px-4 py-3">
@@ -184,7 +171,6 @@ export function HeroSection() {
               </div>
             </div>
 
-            {/* Decorative glow */}
             <div className="pointer-events-none absolute -inset-4 -z-10 rounded-xl bg-primary/10 blur-3xl" />
           </div>
         </div>
